@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+{% endblock %}
+
+{% block extend_nav %} 
+
+<ul class="sidenav">
+  <li><a class="active" href="{% url 'main:videos' %}">Demo Videos</a></li>
+  <li><a href="javascript:void(0)" onclick="alert('Please select a video')">Demo Play Video</a></li>
+</ul>
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Django YouTube API Demo - Videos</h3>
+
+<div class="img-container">
+
+  {% for v in videos %}
+  <div class="gallery">
+    <a href="{% url 'main:play-video' %}?vid_id={{v.id}}" >
+      <img src="{{v.thumbnail}}" alt="YouTube Video {{v.id}}">
+    </a>
+    <div class="desc">{{v.title_formatted}}</div>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+{% endblock %}
